@@ -1,7 +1,9 @@
+import 'package:bible_journal/core/utils/color_util.dart';
 import 'package:bible_journal/presentation/widgets/card/feature_card_widget.dart';
 import 'package:bible_journal/presentation/widgets/card/index_outline_card_widget.dart';
 import 'package:bible_journal/presentation/widgets/custom_regular_app_bar.dart';
 import 'package:bible_journal/presentation/widgets/mobile_status_margin_top.dart';
+import 'package:bible_journal/presentation/widgets/texts/header_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,6 +20,7 @@ class _HomePageState extends State<HomePage> {
         title: "Bible Journal",
         body: Container(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FeatureCardWidget(
                 imageUrl: "assets/images/avatars/lalisa.jpeg",
@@ -25,6 +28,17 @@ class _HomePageState extends State<HomePage> {
                 authorName: "Lalisa Manoban",
                 description:
                     "The joy of the Lord is found on the road to restoration.",
+              ),
+              SizedBox(height: 10.0,),
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                ),
+                child: HeaderTextWidget(
+                  title: "Bible Outlines",
+                  color: ColorUtil.primaryTextColor,
+                  fontSize: 22,
+                ),
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 20.0),
