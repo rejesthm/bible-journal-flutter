@@ -6,7 +6,6 @@ import 'router_util.dart';
 import 'routes_list.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
-  final args = settings.arguments;
   switch (settings.name) {
     case HOME_ROUTE:
       return pushNamed(page: HomePage(), settings: settings);
