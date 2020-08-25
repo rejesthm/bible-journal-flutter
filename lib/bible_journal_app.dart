@@ -1,8 +1,8 @@
+import 'package:bible_journal/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'core/utils/color_util.dart';
 import 'presentation/screens/errors/not_found_page.dart';
-import 'presentation/screens/home/home_page.dart';
 import 'core/utils/routes/routes_navigation_util.dart' as routes;
 
 class BibleJournalApp extends StatefulWidget {
@@ -71,7 +71,7 @@ class _BibleJournalAppState extends State<BibleJournalApp> {
           ),
         ),
       ),
-      home: HomePage(),
+      home: SplashScreen(),
       onGenerateRoute: routes.generateRoute,
       onUnknownRoute: (settings) => MaterialPageRoute(
           builder: (context) => NotFoundPage(name: settings.name)),

@@ -4,6 +4,7 @@ import 'package:bible_journal/domain/repository/repository.dart';
 import 'package:bible_journal/domain/usecases/fetch_journals_use_case.dart';
 import 'package:bible_journal/domain/usecases/listen_for_journals_use_case.dart';
 import 'package:bible_journal/domain/usecases/store_journals_use_case.dart';
+import 'package:bible_journal/presentation/bloc/splash/splash_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
@@ -11,6 +12,9 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'core/utils/app/env_util.dart';
+import 'presentation/bloc/home/home_bloc.dart';
+
+final sl = GetIt.instance;
 
 class DataInstantiator extends BibleJournalDataInstantiator {
   Database database;
@@ -22,6 +26,19 @@ class DataInstantiator extends BibleJournalDataInstantiator {
     database = await getDatabase(env);
 
     Repository repository = RepositoryImpl(database);
+
+    //bloc
+    sl.registerFactory<HomeBloc>(
+      () => HomeBloc(
+        storeJournalsUseCase: StoreJournalsUseCase(repository),
+        fetchJournalsUseCase: FetchJournalsUseCase(repository),
+      ),
+    );
+    sl.registerFactory<SplashBloc>(
+      () => SplashBloc(
+        storeJournalsUseCase: StoreJournalsUseCase(repository),
+      ),
+    );
 
     //core
     GetIt.I.registerSingleton<Database>(database);
