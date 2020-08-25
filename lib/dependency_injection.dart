@@ -11,6 +11,9 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'core/utils/app/env_util.dart';
+import 'presentation/bloc/bloc/home_bloc.dart';
+
+final sl = GetIt.instance;
 
 class DataInstantiator extends BibleJournalDataInstantiator {
   Database database;
@@ -22,6 +25,14 @@ class DataInstantiator extends BibleJournalDataInstantiator {
     database = await getDatabase(env);
 
     Repository repository = RepositoryImpl(database);
+
+    //bloc
+    sl.registerFactory<HomeBloc>(
+      () => HomeBloc(
+        storeJournalsUseCase: StoreJournalsUseCase(repository),
+        fetchJournalsUseCase: FetchJournalsUseCase(repository),
+      ),
+    );
 
     //core
     GetIt.I.registerSingleton<Database>(database);
