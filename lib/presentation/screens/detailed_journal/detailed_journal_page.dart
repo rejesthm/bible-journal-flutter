@@ -11,7 +11,16 @@ class DetailedJournalPage extends StatefulWidget {
   _DetailedJournalPageState createState() => _DetailedJournalPageState();
 }
 
-class _DetailedJournalPageState extends State<DetailedJournalPage> {
+class _DetailedJournalPageState extends State<DetailedJournalPage>
+    with TickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = new TabController(length: 2, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MobileStatusMarginTop(
@@ -86,14 +95,72 @@ class _DetailedJournalPageState extends State<DetailedJournalPage> {
                       ),
                     ),
                   ),
-                  expandedHeight: 200.0,
+                  expandedHeight: 230.0,
+                  bottom: PreferredSize(
+                    preferredSize: Size.fromHeight(10.0),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      margin: EdgeInsets.only(left: 20.0),
+                      child: TabBar(
+                        controller: _tabController,
+                        labelColor: ColorUtil.primaryColor,
+                        unselectedLabelColor: ColorUtil.primaryTextColor,
+                        isScrollable: true,
+                        tabs: [
+                          Tab(
+                            text: "Journal",
+                          ),
+                          Tab(
+                            text: "About the Author",
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ];
             },
-            body: Container(),
+            body: _buildTabBarView(),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildTabBarView() {
+    return Column(
+      children: [
+        Expanded(
+          child: TabBarView(
+            children: [
+              _buildJournalTab(),
+              _buildJournalTab(),
+            ],
+            controller: _tabController,
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildJournalTab() {
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          sliver: SliverGrid.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20.0,
+            mainAxisSpacing: 10,
+            childAspectRatio: 1 / 1.05,
+            children: [
+              Container(
+                child: Text("asdasd"),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }
