@@ -7,9 +7,9 @@ class JournalMapper extends BibleJournalMapper<Journal> {
     if (map == null) return null;
     return Journal(
       id: map['id'],
-      journalTitle: map['id'],
-      journalDescription: map['id'],
-      journalContent: map['id'],
+      journalTitle: map['journalTitle'],
+      journalDescription: map['journalDescription'],
+      journalContent: map['journalContent'],
     );
   }
 

@@ -4,7 +4,7 @@ import 'package:bible_journal/data/models/journal.dart';
 import 'author.dart';
 
 class Journals extends BibleJournalModel {
-  final String id;
+  final int id;
   final Journal journal;
   final Author authorProfile;
   final String imageUrl;

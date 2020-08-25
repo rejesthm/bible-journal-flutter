@@ -2,16 +2,16 @@ class MockData {
   static getJournals() {
     final data = [
       {
-        "id": "1",
+        "id": 1,
         "author": {
-          "id": "1",
+          "id": 1,
           "authorName": "John Smith",
           "aboutAuthor": "1",
           "address": "Maniki, Kapalong, Davao del Norte",
           "contactNumber": "09451096905",
         },
         "journal": {
-          "id": "1",
+          "id": 1,
           "journalTitle": "Joy and Strength",
           "journalDescription":
               "Though chosen, rescued, and promised, God’s people suffered through severe consequence for their continual rejection of Him and His covenant.",

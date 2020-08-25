@@ -1,7 +1,7 @@
 import 'package:bible_journal/core/architecture.dart/architecture.dart';
 
 class Author extends BibleJournalModel {
-  final String id;
+  final int id;
   final String authorName;
   final String aboutAuthor;
   final String address;
