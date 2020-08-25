@@ -13,8 +13,8 @@ class ShadowWidget extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.06),
-            spreadRadius: 0.01,
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 0.2,
             blurRadius: 15,
             offset: Offset(0, 1), // changes position of shadow
           ),
