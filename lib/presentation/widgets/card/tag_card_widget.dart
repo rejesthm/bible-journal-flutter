@@ -9,8 +9,8 @@ class TagCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30.0,
-      width: 55.0,
+      height: 24.0,
+      width: 45.0,
       decoration: BoxDecoration(
         color: ColorUtil.primaryColor,
         borderRadius: BorderRadius.all(

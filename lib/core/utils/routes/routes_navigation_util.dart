@@ -7,12 +7,17 @@ import 'router_util.dart';
 import 'routes_list.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
+  final args = settings.arguments;
   switch (settings.name) {
     case HOME_ROUTE:
       return pushNamed(page: HomePage(), settings: settings);
       break;
     case DETAILED_JOURNAL_ROUTE:
-      return pushNamed(page: DetailedJournalPage(), settings: settings);
+      return pushNamed(
+          page: DetailedJournalPage(
+            journal: args,
+          ),
+          settings: settings);
       break;
     default:
       return _errorRoute(settings);

@@ -27,15 +27,6 @@ class HomePresenter extends BibleJournalPresenter {
 
     storeJournals();
     journalsController.addStream(listenForJournalsUseCase.stream());
-
-    // List<Journals> journals;
-    // listenForJournalsUseCase.stream().listen((event) {
-    //   journals = event;
-    // });
-
-    // await Future.delayed(Duration(milliseconds: 350));
-
-    // print(journals[0].authorProfile.authorName);
   }
 
   @override

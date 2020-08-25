@@ -1,4 +1,5 @@
 import 'package:bible_journal/core/utils/color_util.dart';
+import 'package:bible_journal/data/models/journals.dart';
 import 'package:bible_journal/presentation/widgets/buttons/primary_button_widget.dart';
 import 'package:bible_journal/presentation/widgets/custom_regular_app_bar_no_scroll.dart';
 import 'package:bible_journal/presentation/widgets/mobile_status_margin_top.dart';
@@ -7,6 +8,11 @@ import 'package:bible_journal/presentation/widgets/texts/header_text_widget.dart
 import 'package:flutter/material.dart';
 
 class DetailedJournalPage extends StatefulWidget {
+  final Journals journal;
+
+  const DetailedJournalPage({Key key, @required this.journal})
+      : super(key: key);
+
   @override
   _DetailedJournalPageState createState() => _DetailedJournalPageState();
 }
@@ -54,8 +60,7 @@ class _DetailedJournalPageState extends State<DetailedJournalPage>
                                 Radius.circular(15.0),
                               ),
                               image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/avatars/lalisa.jpeg"),
+                                image: AssetImage(widget.journal.imageUrl),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -70,17 +75,18 @@ class _DetailedJournalPageState extends State<DetailedJournalPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   HeaderTextWidget(
-                                    title: "Lalisa Manoban",
+                                    title:
+                                        widget.journal.authorProfile.authorName,
                                   ),
                                   DescriptionText(
-                                    text:
-                                        "Though chosen, rescued, and promised, God\’s people suffered through severe consequence for their continual rejection of Him and His covenant.",
+                                    text: widget
+                                        .journal.journal.journalDescription,
                                     fontSize: 10,
                                     color: ColorUtil.primarySubTextColor,
                                     hasLimit: true,
                                   ),
                                   SizedBox(
-                                    height: 12.0,
+                                    height: 25.0,
                                   ),
                                   PrimaryButton(
                                     text: "Add as favourite author",
@@ -147,19 +153,22 @@ class _DetailedJournalPageState extends State<DetailedJournalPage>
     return CustomScrollView(
       slivers: [
         SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-          sliver: SliverGrid.count(
-            crossAxisCount: 2,
-            crossAxisSpacing: 20.0,
-            mainAxisSpacing: 10,
-            childAspectRatio: 1 / 1.05,
-            children: [
-              Container(
-                child: Text("asdasd"),
-              )
-            ],
-          ),
-        )
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HeaderTextWidget(
+                    title: widget.journal.journal.journalTitle ?? "",
+                    fontSize: 22,
+                  ),
+                  Divider(),
+                  Container(
+                    child: Text(widget.journal.journal.journalContent ?? ""),
+                  )
+                ],
+              ),
+            ))
       ],
     );
   }
