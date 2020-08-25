@@ -7,18 +7,20 @@ class DescriptionText extends StatelessWidget {
   final double fontSize;
   final TextAlign textAlign;
   final Color color;
+  final bool hasLimit;
 
   DescriptionText(
       {@required this.text,
       this.fontWeight,
       this.fontSize = 13,
       this.textAlign,
-      this.color});
+      this.color,
+      this.hasLimit = false});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      text ?? "", 
+      text ?? "",
       style: TextStyle(
         height: 1.5,
         fontSize: fontSize,
@@ -26,6 +28,8 @@ class DescriptionText extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.w500,
       ),
       textAlign: textAlign ?? TextAlign.left,
+      maxLines: hasLimit ? 5 : 100,
+      overflow: TextOverflow.fade,
     );
   }
 }
