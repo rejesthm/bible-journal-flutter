@@ -1,4 +1,5 @@
 import 'package:bible_journal/core/utils/color_util.dart';
+import 'package:bible_journal/data/models/journals.dart';
 import 'package:bible_journal/presentation/widgets/card/tag_card_widget.dart';
 import 'package:bible_journal/presentation/widgets/images/circle_image_widget.dart';
 import 'package:bible_journal/presentation/widgets/properties/shadow_widget.dart';
@@ -7,17 +8,11 @@ import 'package:bible_journal/presentation/widgets/texts/header_text_widget.dart
 import 'package:flutter/material.dart';
 
 class FeatureCardWidget extends StatelessWidget {
-  final String imageUrl;
-  final String journalTitle;
-  final String authorName;
-  final String description;
+  final Journals journal;
 
   const FeatureCardWidget({
     Key key,
-    @required this.imageUrl,
-    @required this.journalTitle,
-    @required this.authorName,
-    @required this.description,
+    @required this.journal,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -41,7 +36,7 @@ class FeatureCardWidget extends StatelessWidget {
                 Row(
                   children: [
                     CircleImage(
-                      imageUrl: imageUrl,
+                      imageUrl: journal.imageUrl ?? "",
                       size: 100,
                     ),
                     SizedBox(
@@ -53,14 +48,15 @@ class FeatureCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           HeaderTextWidget(
-                            title: journalTitle,
+                            title: journal.journal.journalTitle ?? "",
                           ),
                           DescriptionText(
-                            text: authorName,
+                            text: journal.authorProfile.authorName ?? "",
                             fontSize: 12,
                           ),
                           DescriptionText(
-                            text: description,
+                            hasLimit: true,
+                            text: journal.journal.journalDescription ?? "",
                             fontSize: 10,
                             color: ColorUtil.primarySubTextColor,
                           )
@@ -71,7 +67,7 @@ class FeatureCardWidget extends StatelessWidget {
                 ),
                 Positioned(
                   right: 0,
-                  bottom: 10.0,
+                  top: 10.0,
                   child: TagCardWidget(
                     tagText: "NEW",
                   ),

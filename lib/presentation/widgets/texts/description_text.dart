@@ -28,7 +28,7 @@ class DescriptionText extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.w500,
       ),
       textAlign: textAlign ?? TextAlign.left,
-      maxLines: hasLimit ? 5 : 100,
+      maxLines: hasLimit ? 3 : 100,
       overflow: TextOverflow.fade,
     );
   }
