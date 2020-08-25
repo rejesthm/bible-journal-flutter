@@ -34,7 +34,7 @@ class JournalsDb extends Db {
 
   Future<void> saveList(List<dynamic> journals) async {
     for (Map<String, dynamic> journal in journals) {
-      this.save(journal);
+      await this.save(journal);
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:bible_journal/core/utils/color_util.dart';
+import 'package:bible_journal/core/utils/routes/routes_list.dart';
 import 'package:bible_journal/data/models/journals.dart';
 import 'package:bible_journal/presentation/widgets/card/tag_card_widget.dart';
 import 'package:bible_journal/presentation/widgets/images/circle_image_widget.dart';
@@ -20,59 +21,65 @@ class FeatureCardWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20),
       child: ShadowWidget(
-        child: Container(
-          height: 150.0,
-          width: width,
-          decoration: BoxDecoration(
-            color: ColorUtil.primaryBackgroundColor,
-            borderRadius: BorderRadius.all(
-              Radius.circular(15.0),
-            ),
-          ),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, DETAILED_JOURNAL_ROUTE,
+                arguments: journal);
+          },
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 10.0),
-            child: Stack(
-              children: [
-                Row(
-                  children: [
-                    CircleImage(
-                      imageUrl: journal.imageUrl ?? "",
-                      size: 100,
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          HeaderTextWidget(
-                            title: journal.journal.journalTitle ?? "",
-                          ),
-                          DescriptionText(
-                            text: journal.authorProfile.authorName ?? "",
-                            fontSize: 12,
-                          ),
-                          DescriptionText(
-                            hasLimit: true,
-                            text: journal.journal.journalDescription ?? "",
-                            fontSize: 10,
-                            color: ColorUtil.primarySubTextColor,
-                          )
-                        ],
+            height: 150.0,
+            width: width,
+            decoration: BoxDecoration(
+              color: ColorUtil.primaryBackgroundColor,
+              borderRadius: BorderRadius.all(
+                Radius.circular(15.0),
+              ),
+            ),
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              child: Stack(
+                children: [
+                  Row(
+                    children: [
+                      CircleImage(
+                        imageUrl: journal.imageUrl ?? "",
+                        size: 100,
                       ),
-                    )
-                  ],
-                ),
-                Positioned(
-                  right: 0,
-                  top: 10.0,
-                  child: TagCardWidget(
-                    tagText: "NEW",
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeaderTextWidget(
+                              title: journal.journal.journalTitle ?? "",
+                            ),
+                            DescriptionText(
+                              text: journal.authorProfile.authorName ?? "",
+                              fontSize: 12,
+                            ),
+                            DescriptionText(
+                              hasLimit: true,
+                              text: journal.journal.journalDescription ?? "",
+                              fontSize: 10,
+                              color: ColorUtil.primarySubTextColor,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
+                  Positioned(
+                    right: 0,
+                    top: 10.0,
+                    child: TagCardWidget(
+                      tagText: "NEW",
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

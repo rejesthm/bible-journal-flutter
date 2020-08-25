@@ -6,7 +6,7 @@ class StoreJournalsUseCase extends BibleJournalUseCase {
 
   StoreJournalsUseCase(this.repository);
 
-  Future<void> execute(data) {
-    return repository.saveData(data);
+  Future<void> execute(data) async {
+    return await repository.saveData(data);
   }
 }

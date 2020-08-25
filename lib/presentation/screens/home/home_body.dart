@@ -1,6 +1,6 @@
 import 'package:bible_journal/core/utils/color_util.dart';
 import 'package:bible_journal/data/models/journals.dart';
-import 'package:bible_journal/presentation/bloc/bloc/home_bloc.dart';
+import 'package:bible_journal/presentation/bloc/home/home_bloc.dart';
 import 'package:bible_journal/presentation/widgets/card/feature_card_widget.dart';
 import 'package:bible_journal/presentation/widgets/card/index_outline_card_widget.dart';
 import 'package:bible_journal/presentation/widgets/custom_regular_app_bar_no_scroll.dart';
@@ -109,7 +109,9 @@ class _HomeBodyState extends State<HomeBody> {
               );
             }
 
-            return Container();
+            return Container(
+              child: CupertinoActivityIndicator(),
+            );
           },
         ),
       ),

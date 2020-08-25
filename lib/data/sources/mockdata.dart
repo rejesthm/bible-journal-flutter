@@ -6,7 +6,8 @@ class MockData {
         "author": {
           "id": 1,
           "authorName": "John Smith",
-          "aboutAuthor": "1",
+          "aboutAuthor":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "address": "Maniki, Kapalong, Davao del Norte",
           "contactNumber": "09451096905",
         },
@@ -25,7 +26,8 @@ class MockData {
         "author": {
           "id": 1,
           "authorName": "Ben Cruz",
-          "aboutAuthor": "1",
+          "aboutAuthor":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "address": "Maniki, Kapalong, Davao del Norte",
           "contactNumber": "09451096905",
         },
@@ -44,7 +46,8 @@ class MockData {
         "author": {
           "id": 1,
           "authorName": "John Lee",
-          "aboutAuthor": "1",
+          "aboutAuthor":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "address": "Maniki, Kapalong, Davao del Norte",
           "contactNumber": "09451096905",
         },
@@ -63,7 +66,8 @@ class MockData {
         "author": {
           "id": 1,
           "authorName": "Guinevere Pendragon",
-          "aboutAuthor": "1",
+          "aboutAuthor":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "address": "Maniki, Kapalong, Davao del Norte",
           "contactNumber": "09451096905",
         },
@@ -82,7 +86,8 @@ class MockData {
         "author": {
           "id": 1,
           "authorName": "Jordan Minor",
-          "aboutAuthor": "1",
+          "aboutAuthor":
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "address": "Maniki, Kapalong, Davao del Norte",
           "contactNumber": "09451096905",
         },
