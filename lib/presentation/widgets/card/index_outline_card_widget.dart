@@ -35,7 +35,7 @@ class IndexOutlineCardWidget extends StatelessWidget {
               child: Row(
                 children: [
                   CircleImage(
-                    imageUrl: journal.imageUrl,
+                    imageUrl: journal.imageUrl ?? "",
                     size: 50,
                   ),
                   SizedBox(
@@ -47,11 +47,11 @@ class IndexOutlineCardWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         HeaderTextWidget(
-                          title: journal.journal.journalTitle,
+                          title: journal.journal.journalTitle ?? "",
                           color: ColorUtil.primaryTextColor,
                         ),
                         DescriptionText(
-                          text: journal.authorProfile.authorName,
+                          text: journal.authorProfile.authorName ?? "",
                           fontSize: 12,
                         ),
                       ],

@@ -24,19 +24,14 @@ void main() {
 
   group('journals', () {
     test('save journals', () async {
-      List<Journals> journals;
       //GIVEN THAT
       final data = MockData.getJournals();
 
       //WHEN
       await repository.saveData(data);
-      repository.listenForJournals().listen((snapshot) {
-        journals = snapshot;
-      });
 
-      await Future.delayed(Duration(milliseconds: 350));
-
-      print(journals[0].authorProfile.authorName);
+      List<Journals> journals = await repository.getJournals();
+      print(journals);
 
       expect(journals.length, isNot(0));
     });

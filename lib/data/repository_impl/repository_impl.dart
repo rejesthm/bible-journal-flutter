@@ -21,4 +21,9 @@ class RepositoryImpl extends Repository {
   Stream<List<Journals>> listenForJournals() {
     return journalsDb.listenForJournals();
   }
+
+  @override
+  Future<List<Journals>> getJournals() async {
+    return await journalsDb.getJournals();
+  }
 }

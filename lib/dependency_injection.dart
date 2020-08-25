@@ -1,6 +1,7 @@
 import 'package:bible_journal/core/architecture.dart/architecture.dart';
 import 'package:bible_journal/data/repository_impl/repository_impl.dart';
 import 'package:bible_journal/domain/repository/repository.dart';
+import 'package:bible_journal/domain/usecases/fetch_journals_use_case.dart';
 import 'package:bible_journal/domain/usecases/listen_for_journals_use_case.dart';
 import 'package:bible_journal/domain/usecases/store_journals_use_case.dart';
 import 'package:get_it/get_it.dart';
@@ -22,14 +23,17 @@ class DataInstantiator extends BibleJournalDataInstantiator {
 
     Repository repository = RepositoryImpl(database);
 
+    //core
     GetIt.I.registerSingleton<Database>(database);
-
     GetIt.I.registerSingleton<Repository>(repository);
 
+    //usecases
     GetIt.I.registerLazySingleton<StoreJournalsUseCase>(
         () => StoreJournalsUseCase(repository));
     GetIt.I.registerLazySingleton<ListenForJournalsUseCase>(
         () => ListenForJournalsUseCase(repository));
+    GetIt.I.registerLazySingleton<FetchJournalsUseCase>(
+        () => FetchJournalsUseCase(repository));
   }
 
   Future<Database> getDatabase(Map<String, String> env) async {

@@ -22,9 +22,22 @@ class _HomePageState extends BibleJournalPageState<HomePresenter> {
     return HomePresenter(this);
   }
 
+  List<Journals> journals;
+
+  @override
+  void initState() {
+    super.initState();
+    _getJournals();
+  }
+
+  Future _getJournals() async {
+    setState(() async {
+      journals = await presenter.getJournals();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<Journals> journals;
     return MobileStatusMarginTop(
       child: CustomRegularAppBarNoScroll(
         backgroundColor: ColorUtil.primaryBackgroundColor,
@@ -40,25 +53,15 @@ class _HomePageState extends BibleJournalPageState<HomePresenter> {
                   collapseMode: CollapseMode.pin,
                   background: Container(
                       margin: EdgeInsets.symmetric(vertical: 10.0),
-                      child: StreamBuilder<List<Journals>>(
-                          initialData: [],
-                          stream: presenter.journalsController.stream,
-                          builder: (context, snapshot) {
-                            journals = snapshot.data;
-                            if (journals.length != 0) {
-                              return Column(
-                                children: [
-                                  FeatureCardWidget(
-                                    journal: journals[0],
-                                  ),
-                                ],
-                              );
-                            } else {
-                              return Container();
-                            }
-                          })),
+                      child: Column(
+                        children: [
+                          FeatureCardWidget(
+                            journal: journals[0],
+                          ),
+                        ],
+                      )),
                 ),
-                expandedHeight: 230.0,
+                expandedHeight: 220.0,
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(5.0),
                   child: Container(
@@ -79,14 +82,16 @@ class _HomePageState extends BibleJournalPageState<HomePresenter> {
           },
           body: Container(
             color: ColorUtil.primaryBackgroundColor,
-            child: StreamBuilder<List<Journals>>(
-                stream: presenter.journalsController.stream,
-                builder: (context, snapshot) {
-                  journals = snapshot.data;
-                  if (snapshot.hasData) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(vertical: 20),
-                      child: ReorderableListView(
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 20),
+              child: StreamBuilder<bool>(
+                  stream: presenter.busy.stream,
+                  initialData: false,
+                  builder: (context, snapshot) {
+                    if (snapshot.data) {
+                      return CupertinoActivityIndicator();
+                    } else {
+                      return ReorderableListView(
                         children: List.generate(
                           journals?.length,
                           (index) {
@@ -105,11 +110,10 @@ class _HomePageState extends BibleJournalPageState<HomePresenter> {
                             journals.insert(newIndex, item);
                           });
                         },
-                      ),
-                    );
-                  }
-                  return CupertinoActivityIndicator();
-                }),
+                      );
+                    }
+                  }),
+            ),
           ),
         ),
       ),

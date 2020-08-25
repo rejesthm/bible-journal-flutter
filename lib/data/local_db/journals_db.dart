@@ -24,6 +24,14 @@ class JournalsDb extends Db {
     });
   }
 
+  Future<List<Journals>> getJournals() async {
+    final recordSnapshots = await store.find(db);
+
+    return recordSnapshots.map((snapshot) {
+      return _journalsMapper.fromMap(snapshot.value);
+    }).toList();
+  }
+
   Future<void> saveList(List<dynamic> journals) async {
     for (Map<String, dynamic> journal in journals) {
       this.save(journal);
