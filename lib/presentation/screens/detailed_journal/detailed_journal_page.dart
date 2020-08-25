@@ -1,6 +1,7 @@
 import 'package:bible_journal/core/utils/color_util.dart';
 import 'package:bible_journal/data/models/journals.dart';
 import 'package:bible_journal/presentation/widgets/buttons/primary_button_widget.dart';
+import 'package:bible_journal/presentation/widgets/card/index_information.dart';
 import 'package:bible_journal/presentation/widgets/custom_regular_app_bar_no_scroll.dart';
 import 'package:bible_journal/presentation/widgets/mobile_status_margin_top.dart';
 import 'package:bible_journal/presentation/widgets/texts/description_text.dart';
@@ -140,7 +141,7 @@ class _DetailedJournalPageState extends State<DetailedJournalPage>
           child: TabBarView(
             children: [
               _buildJournalTab(),
-              _buildJournalTab(),
+              _buildAboutTheAuthorTab(),
             ],
             controller: _tabController,
           ),
@@ -164,11 +165,58 @@ class _DetailedJournalPageState extends State<DetailedJournalPage>
                   ),
                   Divider(),
                   Container(
-                    child: Text(widget.journal.journal.journalContent ?? ""),
+                    child: DescriptionText(
+                        text: widget.journal.journal.journalContent ?? ""),
                   )
                 ],
               ),
             ))
+      ],
+    );
+  }
+
+  Widget _buildAboutTheAuthorTab() {
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeaderTextWidget(
+                  title: "About the Author",
+                  fontSize: 22,
+                ),
+                Divider(),
+                Container(
+                  child: DescriptionText(
+                      text: widget.journal.authorProfile.aboutAuthor ?? ""),
+                )
+              ],
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Divider(),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              children: [
+                IndexInformation(
+                  icon: Icons.phone,
+                  label: widget.journal.authorProfile.contactNumber,
+                ),
+                IndexInformation(
+                  icon: Icons.location_on,
+                  label: widget.journal.authorProfile.address,
+                )
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }

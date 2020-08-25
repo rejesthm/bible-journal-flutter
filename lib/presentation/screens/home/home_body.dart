@@ -87,6 +87,11 @@ class _HomeBodyState extends State<HomeBody> {
                             children: List.generate(
                               journals?.length,
                               (index) {
+                                if (index == 0) {
+                                  return Container(
+                                    key: ValueKey(journals[index].id),
+                                  );
+                                }
                                 return IndexOutlineCardWidget(
                                   key: ValueKey(journals[index].id),
                                   journal: journals[index],
