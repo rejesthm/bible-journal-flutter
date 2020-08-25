@@ -30,7 +30,7 @@ void main() {
 
       //WHEN
       await repository.saveData(data);
-      repository.listenForActivities().listen((snapshot) {
+      repository.listenForJournals().listen((snapshot) {
         journals = snapshot;
       });
 

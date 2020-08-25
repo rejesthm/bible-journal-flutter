@@ -10,10 +10,10 @@ class JournalsDb extends Db {
   JournalsDb(Database db)
       : super(
           db,
-          intMapStoreFactory.store("activities_hub"),
+          intMapStoreFactory.store("journals"),
         );
 
-  Stream<List<Journals>> listenForActivities() {
+  Stream<List<Journals>> listenForJournals() {
     var query = store.query();
     return query.onSnapshots(db).map((snapshots) {
       return snapshots

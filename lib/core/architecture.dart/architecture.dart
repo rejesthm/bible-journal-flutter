@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-abstract class BibleJournalApp extends StatelessWidget {
+abstract class BibleJournalApplication extends StatelessWidget {
   final BibleJournalDataInstantiator dataInstantiator;
-  BibleJournalApp(this.dataInstantiator);
+  BibleJournalApplication(this.dataInstantiator);
 }
 
 abstract class BibleJournalDataInstantiator {
@@ -79,3 +79,5 @@ abstract class BibleJournalPresenter {
     bibleJournalPageState.presenter = this;
   }
 }
+
+abstract class BibleJournalUseCase {}

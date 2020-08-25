@@ -18,7 +18,7 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Stream<List<Journals>> listenForActivities() {
-    return journalsDb.listenForActivities();
+  Stream<List<Journals>> listenForJournals() {
+    return journalsDb.listenForJournals();
   }
 }
