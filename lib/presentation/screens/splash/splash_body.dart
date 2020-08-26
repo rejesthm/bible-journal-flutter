@@ -15,7 +15,7 @@ class _SplashBodyState extends State<SplashBody> {
   Widget build(BuildContext context) {
     return BlocBuilder<SplashBloc, SplashState>(
       builder: (context, state) {
-        if (state is JournalsOnLoad) {
+        if (state is JournalsLoadingSuccess) {
           SchedulerBinding.instance.addPostFrameCallback((_) {
             Navigator.of(context).pushReplacementNamed(HOME_ROUTE);
           });

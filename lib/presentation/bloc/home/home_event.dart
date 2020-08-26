@@ -7,13 +7,13 @@ abstract class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadJournals extends HomeEvent {
+class LoadJournals extends HomeEvent {}
+
+class OnJournalLoaded extends HomeEvent {
   final List<Journals> journals;
 
-  LoadJournals(this.journals);
+  OnJournalLoaded(this.journals);
 
   @override
   List<Object> get props => [journals];
 }
-
-class OnJournalLoad extends HomeEvent {}

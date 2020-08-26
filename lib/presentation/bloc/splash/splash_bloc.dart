@@ -20,7 +20,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     if (event is AppOnload) {
       final data = MockData.getJournals();
       await storeJournalsUseCase.execute(data);
-      yield JournalsOnLoad();
+      yield JournalsLoadingSuccess();
     }
   }
 }

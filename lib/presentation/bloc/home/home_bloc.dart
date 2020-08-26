@@ -21,12 +21,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Stream<HomeState> mapEventToState(
     HomeEvent event,
   ) async* {
-    if (event is OnJournalLoad) {
+    if (event is LoadJournals) {
       yield JournalsLoading();
       List<Journals> journalData = await fetchJournalsUseCase.execute();
-      add(LoadJournals(journalData));
-    } else if (event is LoadJournals) {
-      yield JournalsLoaded(event.journals);
+      add(OnJournalLoaded(journalData));
+    } else if (event is OnJournalLoaded) {
+      yield JournalsLoadingSuccess(event.journals);
     }
   }
 }

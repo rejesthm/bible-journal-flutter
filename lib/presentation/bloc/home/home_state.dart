@@ -13,10 +13,10 @@ class JournalsLoading extends HomeState {}
 
 class JournalStored extends HomeState {}
 
-class JournalsLoaded extends HomeState {
+class JournalsLoadingSuccess extends HomeState {
   final List<Journals> journals;
 
-  JournalsLoaded(this.journals);
+  JournalsLoadingSuccess(this.journals);
 
   @override
   List<Object> get props => [journals];

@@ -9,4 +9,4 @@ abstract class SplashState extends Equatable {
 
 class SplashInitial extends SplashState {}
 
-class JournalsOnLoad extends SplashState {}
+class JournalsLoadingSuccess extends SplashState {}
