@@ -18,7 +18,7 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   void _onLoad() async {
     BlocProvider.of<HomeBloc>(context).add(
-      OnJournalLoad(),
+      LoadJournals(),
     );
   }
 
@@ -34,7 +34,7 @@ class _HomeBodyState extends State<HomeBody> {
               _onLoad();
             }
 
-            if (state is JournalsLoaded) {
+            if (state is JournalsLoadingSuccess) {
               List<Journals> journals = state.journals;
 
               return NestedScrollView(
