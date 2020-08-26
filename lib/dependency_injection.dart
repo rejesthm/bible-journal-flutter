@@ -36,6 +36,7 @@ class DataInstantiator extends BibleJournalDataInstantiator {
     );
     sl.registerFactory<SplashBloc>(
       () => SplashBloc(
+        fetchJournalsUseCase: FetchJournalsUseCase(repository),
         storeJournalsUseCase: StoreJournalsUseCase(repository),
       ),
     );
